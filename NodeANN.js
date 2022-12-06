@@ -8,28 +8,28 @@ maxApi.post('Hello MaxMSP !\r\n-from Node');
 //----------------------------------------
 
 //  Parameters
-var FEATURE_NAME 		= [];
-var LABEL_NAME 			= [];
-var FEATURES 			= {};
-var LABELS 				= {};
-var DICT 				= {};
-var FILTER_FEATURE 		= '';
+var FEATURE_NAME		= [];
+var LABEL_NAME			= [];
+var FEATURES			= {};
+var LABELS				= {};
+var DICT				= {};
+var FILTER_FEATURE		= '';
 var FILTER_THRESHOLD	= 0;
-var BATCH_SIZE 			= 10;
-var EPOCH 				= 100;
-var LEARNING_RATE 		= 0.1;
+var BATCH_SIZE			= 10;
+var EPOCH				= 100;
+var LEARNING_RATE		= 0.1;
 var HIDDEN_LAYERS		= [{units: 2, activation: 'linear'}];
-var OPTIMIZER 			= tf.train.sgd;
+var OPTIMIZER			= tf.train.sgd;
 var LOSS				= 'meanSquaredError';
 var METRICS				= 'mse';
 
 // 	Global Variables
-var MODEL 				= tf.sequential();
-var TENSOR_DATA 		= {};
+var MODEL				= tf.sequential();
+var TENSOR_DATA			= {};
 
 // 	Constants
-const print 			= 	maxApi.post;
-const activation_list	=  ['elu', 
+const print				= 	maxApi.post;
+const activation_list	=	['elu', 
 							'hardSigmoid', 
 							'linear', 
 							'relu', 
@@ -42,14 +42,14 @@ const activation_list	=  ['elu',
 							'tanh', 
 							'swish', 
 							'mish'];
-const optimizer_list 	=  [tf.train.sgd,
+const optimizer_list	=	[tf.train.sgd,
 							tf.train.momentum,
 							tf.train.adagrad,
 							tf.train.adadelta,
 							tf.train.adam,
 							tf.train.adamax,
 							tf.train.rmsprop];
-const loss_list 		=  ['meanSquaredError',
+const loss_list			=	['meanSquaredError',
 							'meanAbsoluteError',
 							'meanAbsolutePercentageError',
 							'meanSquaredLogarithmicError',
@@ -63,7 +63,7 @@ const loss_list 		=  ['meanSquaredError',
 							'kullbackLeiblerDivergence',
 							'poisson',
 							'cosineProximity'];
-const metrics_list 		=  ['binaryAccuracy',
+const metrics_list		=	['binaryAccuracy',
 							'categoricalAccuracy',
 							'precision',
 							'categoricalCrossentropy',
