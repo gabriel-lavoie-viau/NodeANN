@@ -1,0 +1,67 @@
+{
+	"exemple_1" : 	{
+		"features" : 		{
+			"value1" : 0.0,
+			"value2" : 0.0
+		}
+,
+		"labels" : 		{
+			"out1" : 127.0,
+			"out2" : 127.0
+		}
+
+	}
+,
+	"exemple_2" : 	{
+		"features" : 		{
+			"value1" : 31.0,
+			"value2" : 31.0
+		}
+,
+		"labels" : 		{
+			"out1" : 95.0,
+			"out2" : 95.0
+		}
+
+	}
+,
+	"exemple_3" : 	{
+		"features" : 		{
+			"value1" : 63.0,
+			"value2" : 63.0
+		}
+,
+		"labels" : 		{
+			"out1" : 63.0,
+			"out2" : 63.0
+		}
+
+	}
+,
+	"exemple_4" : 	{
+		"features" : 		{
+			"value1" : 95.0,
+			"value2" : 95.0
+		}
+,
+		"labels" : 		{
+			"out1" : 31.0,
+			"out2" : 31.0
+		}
+
+	}
+,
+	"exemple_5" : 	{
+		"features" : 		{
+			"value1" : 127.0,
+			"value2" : 127.0
+		}
+,
+		"labels" : 		{
+			"out1" : 0.0,
+			"out2" : 0.0
+		}
+
+	}
+
+}
