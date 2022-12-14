@@ -8,70 +8,70 @@ maxApi.post('Hello MaxMSP !\r\n-from Node');
 //----------------------------------------
 
 //  Parameters
-var FEATURE_NAME		= [];
-var LABEL_NAME			= [];
-var FEATURES			= {};
-var LABELS				= {};
-var DICT				= {};
-var FILTER_FEATURE		= '';
+var FEATURE_NAME	= [];
+var LABEL_NAME		= [];
+var FEATURES		= {};
+var LABELS		= {};
+var DICT		= {};
+var FILTER_FEATURE	= '';
 var FILTER_THRESHOLD	= 0;
-var BATCH_SIZE			= 10;
-var EPOCH				= 100;
-var LEARNING_RATE		= 0.1;
-var HIDDEN_LAYERS		= [{units: 2, activation: 'linear'}];
-var OPTIMIZER			= tf.train.sgd;
-var LOSS				= 'meanSquaredError';
-var METRICS				= 'mse';
+var BATCH_SIZE		= 10;
+var EPOCH		= 100;
+var LEARNING_RATE	= 0.1;
+var HIDDEN_LAYERS	= [{units: 2, activation: 'linear'}];
+var OPTIMIZER		= tf.train.sgd;
+var LOSS		= 'meanSquaredError';
+var METRICS		= 'mse';
 
 // 	Global Variables
-var MODEL				= tf.sequential();
-var TENSOR_DATA			= {};
+var MODEL		= tf.sequential();
+var TENSOR_DATA		= {};
 
 // 	Constants
-const print				= 	maxApi.post;
-const activation_list	=	['elu', 
-							'hardSigmoid', 
-							'linear', 
-							'relu', 
-							'relu6', 
-							'selu', 
-							'sigmoid', 
-							'softmax', 
-							'softplus', 
-							'softsign', 
-							'tanh', 
-							'swish', 
-							'mish'];
-const optimizer_list	=	[tf.train.sgd,
-							tf.train.momentum,
-							tf.train.adagrad,
-							tf.train.adadelta,
-							tf.train.adam,
-							tf.train.adamax,
-							tf.train.rmsprop];
-const loss_list			=	['meanSquaredError',
-							'meanAbsoluteError',
-							'meanAbsolutePercentageError',
-							'meanSquaredLogarithmicError',
-							'squaredHinge',
-							'hinge',
-							'categoricalHinge',
-							'logcosh',
-							'categoricalCrossentropy',
-							'sparseCategoricalCrossentropy',
-							'binaryCrossentropy',
-							'kullbackLeiblerDivergence',
-							'poisson',
-							'cosineProximity'];
-const metrics_list		=	['binaryAccuracy',
-							'categoricalAccuracy',
-							'precision',
-							'categoricalCrossentropy',
-							'sparseCategoricalCrossentropy',
-							'mse',
-							'mae',
-							'mape',
-							'cosine'];
+const print		= maxApi.post;
+const activation_list	= ['elu', 
+			'hardSigmoid', 
+			'linear', 
+			'relu', 
+			'relu6', 
+			'selu', 
+			'sigmoid', 
+			'softmax', 
+			'softplus', 
+			'softsign', 
+			'tanh', 
+			'swish', 
+			'mish'];
+const optimizer_list	= [tf.train.sgd,
+			tf.train.momentum,
+			tf.train.adagrad,
+			tf.train.adadelta,
+			tf.train.adam,
+			tf.train.adamax,
+			tf.train.rmsprop];
+const loss_list		= ['meanSquaredError',
+			'meanAbsoluteError',
+			'meanAbsolutePercentageError',
+			'meanSquaredLogarithmicError',
+			'squaredHinge',
+			'hinge',
+			'categoricalHinge',
+			'logcosh',
+			'categoricalCrossentropy',
+			'sparseCategoricalCrossentropy',
+			'binaryCrossentropy',
+			'kullbackLeiblerDivergence',
+			'poisson',
+			'cosineProximity'];
+const metrics_list	= ['binaryAccuracy',
+			'categoricalAccuracy',
+			'precision',
+			'categoricalCrossentropy',
+			'sparseCategoricalCrossentropy',
+			'mse',
+			'mae',
+			'mape',
+			'cosine'];
 //----------------------------------------
 
 /************************************
@@ -435,22 +435,22 @@ function createModel() {
 	MODEL = tf.sequential();
 
 	// Input layer and first hidden layer
-	MODEL.add(tf.layers.dense({				inputShape: [FEATURE_NAME.length], 
-											units: 		HIDDEN_LAYERS[0]["units"], 
-											activation: HIDDEN_LAYERS[0]["activation"]}));
+	MODEL.add(tf.layers.dense({inputShape:	[FEATURE_NAME.length], 
+						units: HIDDEN_LAYERS[0]["units"], 
+						activation: HIDDEN_LAYERS[0]["activation"]}));
 
 	if (HIDDEN_LAYERS.length > 1) {
 		for (let item in HIDDEN_LAYERS) {
 			if (item > 0) {
 				// Additional hidden layers
-				MODEL.add(tf.layers.dense({	units: 		HIDDEN_LAYERS[item]["units"], 
-											activation: HIDDEN_LAYERS[item]["activation"]}));
+				MODEL.add(tf.layers.dense({units: 	HIDDEN_LAYERS[item]["units"], 
+									activation: HIDDEN_LAYERS[item]["activation"]}));
 			}
 		}
 	}
 	// Output layer
-	MODEL.add(tf.layers.dense({				units: 		LABEL_NAME.length, 
-											activation: 'linear'}));
+	MODEL.add(tf.layers.dense({units:	LABEL_NAME.length, 
+						activation: 'linear'}));
 }
 //----------------------------------------
 
@@ -468,12 +468,12 @@ async function trainModel(features, labels) {
 		epochs: EPOCH,
 		shuffle: true,
 		callbacks: {onEpochEnd: async (epoch, logs) => 
-						{
-							maxApi.outlet("epoch", epoch);
-							maxApi.outlet("loss", logs["loss"]);
-							maxApi.outlet("metrics", logs[METRICS]);
-                		}
-					}
+			{
+			maxApi.outlet("epoch", epoch);
+			maxApi.outlet("loss", logs["loss"]);
+			maxApi.outlet("metrics", logs[METRICS]);
+                	}
+		}
 	});
 }
 //----------------------------------------
